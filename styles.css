@@ -1,5 +1,5 @@
 /* ============================================================
-   Archline Metrics — design tokens
+   Archline Metrics: design tokens
    Palette: warm beige ground + deep forest/sage greens + warm ink
    Type: Fraunces (display) / Inter (body) / IBM Plex Mono (measurements)
    Signature: architectural dimension-line dividers + drafting-sheet
@@ -153,7 +153,7 @@ p { margin: 0 0 1em 0; color: var(--ink); }
 }
 
 /* ---------------- Dimension-line divider (signature) ---------------- */
-/* Mirrors an architectural dimension annotation: tick — line — tick,
+/* Mirrors an architectural dimension annotation: tick, line, tick,
    with an optional centered label, used between page sections. */
 
 .dim-divider {
