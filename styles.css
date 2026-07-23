@@ -1,0 +1,418 @@
+/* ============================================================
+   Archline Metrics — design tokens
+   Palette: warm beige ground + deep forest/sage greens + warm ink
+   Type: Fraunces (display) / Inter (body) / IBM Plex Mono (measurements)
+   Signature: architectural dimension-line dividers + drafting-sheet
+   corner brackets on cards, echoing takeoff/drawing annotations.
+   ============================================================ */
+
+:root {
+  --bg: #EDE6D6;           /* warm beige ground */
+  --bg-panel: #E3D9C2;     /* slightly deeper beige for panels */
+  --bg-card: #F4EFE2;      /* lightest card surface */
+  --green-deep: #223226;   /* near-black forest green, headings */
+  --green-mid: #46614E;    /* mid sage green, accents/links */
+  --green-line: #8CA48B;   /* pale sage, hairlines & ticks */
+  --ink: #2A2822;          /* warm near-black body text */
+  --ink-soft: #5B5648;     /* muted secondary text */
+  --cream-line: #D8CDB2;   /* faint dividers on beige */
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+
+  --max-width: 1140px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+
+a {
+  color: var(--green-mid);
+  text-decoration: none;
+}
+a:hover { color: var(--green-deep); }
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--green-mid);
+  outline-offset: 3px;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  color: var(--green-deep);
+  margin: 0 0 0.5em 0;
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+h1 { font-size: clamp(2.4rem, 5vw, 3.8rem); }
+h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); }
+h3 { font-size: 1.25rem; }
+
+p { margin: 0 0 1em 0; color: var(--ink); }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--green-mid);
+  display: inline-block;
+  margin-bottom: 0.9em;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ---------------- Header / Nav ---------------- */
+
+.site-header {
+  border-bottom: 1px solid var(--cream-line);
+  background: var(--bg);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.nav-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 32px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.3rem;
+  color: var(--green-deep);
+  letter-spacing: -0.01em;
+}
+.brand span {
+  color: var(--green-mid);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.nav-links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink);
+  position: relative;
+  padding-bottom: 4px;
+}
+.nav-links a.active,
+.nav-links a:hover {
+  color: var(--green-deep);
+}
+.nav-links a.active::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -2px;
+  height: 2px;
+  background: var(--green-mid);
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--green-deep);
+  border-radius: 4px;
+  padding: 8px 10px;
+  font-family: var(--font-mono);
+  cursor: pointer;
+}
+
+/* ---------------- Dimension-line divider (signature) ---------------- */
+/* Mirrors an architectural dimension annotation: tick — line — tick,
+   with an optional centered label, used between page sections. */
+
+.dim-divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 auto;
+  width: 100%;
+  max-width: var(--max-width);
+  padding: 0 32px;
+}
+
+.dim-divider::before,
+.dim-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--green-line);
+  position: relative;
+}
+
+.dim-divider .dim-tick-l,
+.dim-divider .dim-tick-r {
+  width: 1px;
+  height: 12px;
+  background: var(--green-line);
+}
+
+.dim-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+/* ---------------- Buttons ---------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 14px 26px;
+  border-radius: 2px;
+  border: 1px solid var(--green-deep);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.btn-primary {
+  background: var(--green-deep);
+  color: var(--bg);
+}
+.btn-primary:hover {
+  background: var(--green-mid);
+  color: var(--bg);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--green-deep);
+}
+.btn-ghost:hover {
+  background: var(--green-deep);
+  color: var(--bg);
+}
+
+/* ---------------- Hero ---------------- */
+
+.hero {
+  padding: 96px 0 80px;
+  position: relative;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.hero h1 { margin-bottom: 0.4em; }
+.hero .lede {
+  font-size: 1.15rem;
+  color: var(--ink-soft);
+  max-width: 46ch;
+  margin-bottom: 2em;
+}
+
+.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+/* Drafting panel: a stylized "sheet" with a title block, standing
+   in for a hero image without using any imagery/iconography. */
+
+.sheet {
+  background: var(--bg-card);
+  border: 1px solid var(--cream-line);
+  padding: 28px 28px 0;
+  position: relative;
+}
+
+.sheet-grid {
+  background-image:
+    linear-gradient(var(--cream-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--cream-line) 1px, transparent 1px);
+  background-size: 24px 24px;
+  border: 1px solid var(--cream-line);
+  padding: 28px;
+  min-height: 280px;
+  position: relative;
+}
+
+.sheet-annotations {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.sheet-row {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  border-bottom: 1px dashed var(--green-line);
+  padding-bottom: 10px;
+}
+.sheet-row span:last-child { color: var(--green-deep); font-weight: 600; }
+
+.sheet-titleblock {
+  margin-top: 0;
+  border-top: 1px solid var(--cream-line);
+  padding: 16px 0 20px;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--ink-soft);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ---------------- Corner-bracket card (signature) ---------------- */
+/* Evokes crop/registration marks on a drafting sheet or title block */
+
+.bracket-card {
+  position: relative;
+  background: var(--bg-card);
+  padding: 34px 30px;
+  height: 100%;
+}
+
+.bracket-card::before,
+.bracket-card::after,
+.bracket-card .bc-tr,
+.bracket-card .bc-br {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid var(--green-mid);
+}
+.bracket-card::before { top: 0; left: 0; border-right: none; border-bottom: none; }
+.bracket-card::after { bottom: 0; left: 0; border-right: none; border-top: none; }
+.bracket-card .bc-tr { top: 0; right: 0; border-left: none; border-bottom: none; }
+.bracket-card .bc-br { bottom: 0; right: 0; border-left: none; border-top: none; }
+
+.bracket-card .card-index {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--green-line);
+  letter-spacing: 0.1em;
+  margin-bottom: 14px;
+  display: block;
+}
+
+.bracket-card h3 { margin-bottom: 0.5em; }
+.bracket-card p { color: var(--ink-soft); font-size: 0.95rem; margin-bottom: 0; }
+
+/* ---------------- Section layout ---------------- */
+
+section { padding: 72px 0; }
+.section-head { max-width: 60ch; margin-bottom: 48px; }
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--cream-line);
+  border: 1px solid var(--cream-line);
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--cream-line);
+  border: 1px solid var(--cream-line);
+}
+
+.panel {
+  background: var(--bg-panel);
+}
+
+/* ---------------- Footer ---------------- */
+
+.site-footer {
+  border-top: 1px solid var(--cream-line);
+  padding: 48px 0 40px;
+  margin-top: 40px;
+}
+
+.footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.footer-brand {
+  font-family: var(--font-display);
+  color: var(--green-deep);
+  font-size: 1.1rem;
+}
+
+.footer-meta {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+  letter-spacing: 0.04em;
+}
+
+/* ---------------- Responsive ---------------- */
+
+@media (max-width: 860px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .grid-3, .grid-2 { grid-template-columns: 1fr; }
+  .nav-links {
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    background: var(--bg);
+    border-bottom: 1px solid var(--cream-line);
+    flex-direction: column;
+    gap: 0;
+    padding: 8px 0;
+    display: none;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links li { border-top: 1px solid var(--cream-line); }
+  .nav-links a { display: block; padding: 14px 32px; }
+  .nav-toggle { display: block; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
